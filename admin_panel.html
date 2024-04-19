@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel - Insert Questions</h1>
+    <form action="insert_question.php" method="post">
+        <label for="type">Select Type of Question:</label>
+        <select name="type" id="type" onchange="toggleFields()">
+            <option value="">Select type of question</option>
+            <option value="MCQ">Multiple Choice Question (MCQ)</option>
+            <option value="Descriptive">Descriptive Question</option>
+        </select>
+        <br><br>
+        <label for="question">Enter Question:</label><br>
+        <textarea name="question" id="question" rows="4" cols="50"></textarea>
+        <br><br>
+        <div id="options-container">
+            <!-- Fields for MCQ options will be dynamically added here -->
+        </div>
+        <br><br>
+        <label for="answer">Enter Correct Answer:</label><br>
+        <textarea name="answer" id="answer" rows="4" cols="50"></textarea>
+        <br><br>
+        <label for="explanation">Enter Explanation:</label><br>
+        <textarea name="explanation" id="explanation" rows="4" cols="50"></textarea>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function toggleFields() {
+            var type = document.getElementById("type").value;
+            var optionsContainer = document.getElementById("options-container");
+
+            if (type === "MCQ") {
+                optionsContainer.innerHTML = ""; // Clear previous fields
+                for (var i = 1; i <= 4; i++) {
+                    var optionLabel = document.createElement("label");
+                    optionLabel.textContent = "Option " + i + ":";
+                    var optionInput = document.createElement("input");
+                    optionInput.type = "text";
+                    optionInput.name = "option" + i;
+                    optionInput.required = true; // Make options required
+                    optionsContainer.appendChild(optionLabel);
+                    optionsContainer.appendChild(optionInput);
+                    optionsContainer.appendChild(document.createElement("br"));
+                }
+            } else {
+                optionsContainer.innerHTML = ""; // Clear previous fields
+            }
+        }
+    </script>
+</body>
+</html>
