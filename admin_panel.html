@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <!-- Include CKEditor JavaScript file -->
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 </head>
 <body>
     <h1>Admin Panel - Insert Questions</h1>
@@ -16,6 +18,7 @@
         </select>
         <br><br>
         <label for="question">Enter Question:</label><br>
+        <!-- Replace the regular textarea with CKEditor -->
         <textarea name="question" id="question" rows="4" cols="50"></textarea>
         <br><br>
         <div id="options-container">
@@ -23,9 +26,11 @@
         </div>
         <br><br>
         <label for="answer">Enter Correct Answer:</label><br>
+        <!-- Replace the regular textarea with CKEditor -->
         <textarea name="answer" id="answer" rows="4" cols="50"></textarea>
         <br><br>
         <label for="explanation">Enter Explanation:</label><br>
+        <!-- Replace the regular textarea with CKEditor -->
         <textarea name="explanation" id="explanation" rows="4" cols="50"></textarea>
         <br><br>
         <input type="submit" value="Submit">
@@ -53,6 +58,11 @@
                 optionsContainer.innerHTML = ""; // Clear previous fields
             }
         }
+
+        // Initialize CKEditor for each textarea
+        CKEDITOR.replace('question');
+        CKEDITOR.replace('answer');
+        CKEDITOR.replace('explanation');
     </script>
 </body>
 </html>
